@@ -1,0 +1,24 @@
+- links_category: 朋友们
+  has_thumbnail: false
+  list:
+    - name: 烟墨的屑站点
+      link: https://www.ymbit.cn
+      description: 林花谢了春红，太匆匆。无奈朝来寒雨，晚来风。
+      avatar: https://avatar.ymbit.cn
+
+    - name: 夏沫花火zzz🌙 (Muska_Ami)のLife
+      link: https://www.1l1.icu
+      description: Keep doing, keep loving
+      avatar: https://blog.1l1.icu/images/avatar.jpg
+
+    - name: win2k的小站
+      link: https://www.abjust.fun
+      description: 生活本无意义，但人类选择追寻
+      avatar: https://www.abjust.fun/upload/b_e04b0924f8e749918b3553c0f04cc099.jpg
+
+- links_category: 我的项目
+  has_thumbnail: false
+  list:
+    - name: KuoHuBit
+      link: https://bot.khbit.cn
+      avatar: https://bot.khbit.cn/favicon.ico

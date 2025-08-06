@@ -4,17 +4,17 @@
 
 # Site
 title: KuoHuBlog
-subtitle: '林花谢了春红，太匆匆。无奈招来寒雨，晚来风。'
-description: '用代码表达言语的魅力，用代码书写山河的壮丽'
-keywords: 'yanmoblog, ymbit'
-author: ltzXiaoYanMo
+subtitle: '请输入文本'
+description: '请输入文本'
+keywords: '点击输入文本'
+author: KuoHu
 language: zh-CN
 # noinspection YAMLSchemaValidation
 timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://blog.ymbit.cn
+url: https://khbit.cn
 permalink: archives/:title/
 permalink_defaults:
 pretty_urls:
@@ -107,6 +107,7 @@ deploy:
 # Extensions
 plugins:
   hexo-generator-feed
+  hexo-filter-mermaid-diagrams
 #Feed Atom
 feed:
   type: atom
