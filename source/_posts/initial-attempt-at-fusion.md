@@ -64,11 +64,11 @@ $$
 {% notel green fa-lightbulb 作者的吐槽 %}
 如果你口算能力比较强，会发现实际上上面的数据是错误的，因为线条有粗细，而且为了计算方便，部分数值进行了四舍五入操作，导致在测量时存在误差，全长的实际测量值是 924px，而预期的测量值是 940px，也就是有 22.5mm 的误差：
 $$
-\frac{L}{H}\times  153cm = \frac{16px}{960px}\times 153px = 2.55cm = 25.5mm
+\frac{L}{H}\times  153cm = \frac{16px}{960px}\times 153cm = 2.55cm = 25.5mm
 $$
 在 px 转换到 cm 的过程中，为了方便后续计算与制作，也采取了四舍五入的办法，底部在原图中的长度应为 1cm 左右，但是这样实在太短了，制作与拼装并不方便，所以这里指定其长度为 3cm
 $$
-\frac{L}{H}\times  153cm = \frac{6px}{960px}\times 153px \approx 0.976595cm \approx 1cm
+\frac{L}{H}\times  153cm = \frac{6px}{960px}\times 153cm \approx 0.976595cm \approx 1cm
 $$
 {% endnotel %}
 
