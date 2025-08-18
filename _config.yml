@@ -29,7 +29,7 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render:
+skip_render: ['_redirects']
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -90,7 +90,7 @@ pagination_dir: page
 
 # Include / Exclude file(s)
 ## include:/exclude: options only apply to the 'source/' folder
-include: []
+include: ['_redirects']
 exclude: []
 ignore:
 
@@ -106,8 +106,8 @@ deploy:
 
 # Extensions
 plugins:
-  hexo-generator-feed
-  hexo-filter-mermaid-diagrams
+  - hexo-generator-feed
+  - hexo-filter-mermaid-diagrams
 #Feed Atom
 feed:
   type: atom
