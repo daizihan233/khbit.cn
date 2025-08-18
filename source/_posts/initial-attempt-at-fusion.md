@@ -45,7 +45,7 @@ $$
 
 取到 $H = 940px$
 
-# 物体
+## 物体
 用同样的办法测量并求值：
 
 ![绘制物体各部分的直线](../img/initial-attempt-at-fusion/img2.png)
