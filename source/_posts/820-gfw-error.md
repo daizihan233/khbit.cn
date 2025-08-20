@@ -12,7 +12,7 @@ tags: 技术
 
 根据经验，我快速想到可能是由外部因素导致，迅速开始多次重复实验并收集抓包数据。
 
-![抓包页截图](../img/820-gfw-error/img.png)
+![抓包页截图](https://khbitcn-1301949915.cos.accelerate.myqcloud.com/img/820-gfw-error/img.png)
 
 本文仅作理论分析，不讨论政治内容。
 
@@ -44,21 +44,21 @@ tags: 技术
 ## 序号 2：异常的 RST ACK（收） —— TCP 包检测
 从第 2 个包开始看起，这是一个非常标准的 RST ACK 包，GFW 监听到了一个目标 IP 为境外 IP 的 TCP 包，快速响应了一个 RST ACK
 
-![序号 2 包的详细信息](../img/820-gfw-error/img2.png)
+![序号 2 包的详细信息](https://khbitcn-1301949915.cos.accelerate.myqcloud.com/img/820-gfw-error/img2.png)
 
 ## 序号 7：异常的 RST ACK（收） —— SNI 阻断
 首先要了解 SNI 是什么：想象一下你去参加一个大型聚会，这个聚会有很多不同的房间，每个房间代表一个不同的网站。SNI 就相当于告诉接待人员你需要去哪个房间。SNI 的出现是为了解决一个服务器可能部署多个网站服务而诞生的，但他也留下了 Web 安全最后一道缝隙 —— SNI 通过明文传输。
 
 GFW 就是通过这一漏洞，去阻止境外连接的：扫描每个 TCP 包，如果发现是 Client Hello 就再扫描 SNI 是否在黑名单内，是就发送 RST ACK
 
-![序号 7 包的详细信息](../img/820-gfw-error/img3.png)
+![序号 7 包的详细信息](https://khbitcn-1301949915.cos.accelerate.myqcloud.com/img/820-gfw-error/img3.png)
 
 ## 序号 9 & 11：异常的 RST（发，疑似伪造） —— RST 伪造
 9 号包和 11 号包都是 RST 包，然而有趣的是，这两个包再抓包软件内都显示是由本地发出去的。显然这个包被篡改过，目的是为了迷惑网络维护人员，使其难以确定攻击方的身份。由于 GFW 篡改过的包很特殊，所以不论在连接发起方还是接收方都难以排查出真正的攻击方，使其没有强而有力的证据表明就是 GFW 干的，这不仅依赖 GFW 在整个互联网中地位，也依赖于 GFW 的工作性质。
 
-![序号 9 包的详细信息](../img/820-gfw-error/img4.png)
+![序号 9 包的详细信息](https://khbitcn-1301949915.cos.accelerate.myqcloud.com/img/820-gfw-error/img4.png)
 
-![序号 11 包的详细信息](../img/820-gfw-error/img5.png)
+![序号 11 包的详细信息](https://khbitcn-1301949915.cos.accelerate.myqcloud.com/img/820-gfw-error/img5.png)
 
 这个部分就是本文分析的重点了，按理说这个 RST 包怎么也得是 GFW 给 PC 发，怎么就变成 PC 给目标服务发了呢？就是因为 RST 伪造。
 
@@ -126,7 +126,7 @@ flowchart TD
 
 测试攻击程序你可以在 [Github Gist](https://gist.github.com/daizihan233/e6172bfd1b8ff0359892412e88b0642c) 找到
 
-![攻击抓包展示](../img/820-gfw-error/img7.png)
+![攻击抓包展示](https://khbitcn-1301949915.cos.accelerate.myqcloud.com/img/820-gfw-error/img7.png)
 
 你所需要关心的，就是这三个包。第一个包是 Client Hello，我这里使用我的个人博客作为测试，第三个包是 RST ACK，是攻击程序发给受害者的，我们先来看比较好解释的第三个包：
 
@@ -212,7 +212,7 @@ flowchart TD
 ## 序号 12：异常的 RST ACK（收）
 由 9 & 11 号包的猜测，没啥好说的，最后的补刀而已，彻底断开客户端与服务端的连接。因为 9 & 11 伪造的 RST 包不是由发送者生成的，会导致 TCP 连接一直开着然后一直在重传，浪费不必要的网络资源，所以这里 GFW 会再发一个 RST ACK 包给客户端，结束这个 TCP 连接。
 
-![序号 12 包的详细信息](../img/820-gfw-error/img6.png)
+![序号 12 包的详细信息](https://khbitcn-1301949915.cos.accelerate.myqcloud.com/img/820-gfw-error/img6.png)
 
 ## 完整攻击链
 
